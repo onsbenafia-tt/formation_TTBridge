@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Support de Formation — TTBridge | Tunisie Telecom</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --teal: #1a7a72;
+            --teal-mid: #1f8f86;
+            --teal-lt: #e8f5f4;
+            --blue: #0d3c6e;
+            --blue-lt: #e8f0fa;
+            --orange: #e67e22;
+            --orange-lt: #fef3e8;
+            --red: #c0392b;
+            --green: #1e7e4a;
+            --green-lt: #e8f5ee;
+            --gray: #4a5568;
+            --gray-lt: #f5f7fa;
+            --border: #d1dbe8;
+            --text: #1a202c;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 9.5pt;
+            color: var(--text);
+            background: #e0e5ec;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* ── PAGE ── */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin: 20px auto;
+            position: relative;
+            page-break-after: always;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* ── COVER ── */
+        .cover {
+            width: 210mm;
+            height: 297mm;
+            background: linear-gradient(145deg, #0d3c6e 0%, #1a5c9e 40%, #1a7a72 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .cover-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .cover-topbar {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 10px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8pt;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cover-topbar strong {
+            color: white;
+            font-size: 9pt;
+        }
+
+        .tt-badge {
+            background: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 12pt;
+            color: var(--blue);
+            font-family: Arial, sans-serif;
+        }
+
+        .cover-main {
+            flex: 1;
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cover-box {
+            background: rgba(13, 30, 55, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 30px 32px;
+            max-width: 320px;
+            margin-bottom: 36px;
+        }
+
+        .cover-label {
+            font-size: 8pt;
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .cover-hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 10px 0 14px;
+        }
+
+        .cover-title {
+            font-size: 28pt;
+            font-weight: 700;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .cover-sub {
+            font-size: 10pt;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.5;
+        }
+
+        .cover-authors {
+            font-size: 8.5pt;
+            color: rgba(255, 255, 255, 0.55);
+            font-style: italic;
+            margin-top: 14px;
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            max-width: 420px;
+        }
+
+        .cover-meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 5px;
+            padding: 8px 12px;
+        }
+
+        .cover-meta-label {
+            font-size: 7.5pt;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 3px;
+        }
+
+        .cover-meta-value {
+            font-size: 9pt;
+            color: white;
+            font-weight: 600;
+        }
+
+        .cover-bottom {
+            padding: 12px 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.5pt;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* ── PAGE HEADER (inner pages) ── */
+        .ph {
+            background: var(--teal);
+            padding: 11px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ph-title {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: white;
+        }
+
+        .ph-right {
+            font-size: 7.5pt;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: right;
+        }
+
+        .ph-right strong {
+            color: white;
+            font-size: 8pt;
+            display: block;
+        }
+
+        /* ── PAGE CONTENT ── */
+        .pc {
+            padding: 22px 26px 56px;
+        }
+
+        /* ── SECTION HEADER ── */
+        .sh {
+            background: var(--teal);
+            color: white;
+            padding: 9px 16px;
+            font-size: 10pt;
+            font-weight: 700;
+            border-radius: 3px;
+            margin: 18px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sh.blue {
+            background: var(--blue);
+        }
+
+        .sh.dark {
+            background: #1a2e44;
+        }
+
+        /* ── SUB-SECTION ── */
+        .ssh {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: var(--teal);
+            border-bottom: 2px solid var(--teal);
+            padding-bottom: 4px;
+            margin: 14px 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ssh.blue {
+            color: var(--blue);
+            border-bottom-color: var(--blue);
+        }
+
+        /* ── INTRO BOX ── */
+        .intro {
+            background: var(--teal-lt);
+            border-left: 4px solid var(--teal);
+            padding: 10px 14px;
+            margin-bottom: 14px;
+            border-radius: 0 4px 4px 0;
+            font-size: 9.5pt;
+            line-height: 1.65;
+        }
+
+        .intro.blue {
+            background: var(--blue-lt);
+            border-left-color: var(--blue);
+        }
+
+        /* ── CALLOUT ── */
+        .callout {
+            border-radius: 4px;
+            padding: 9px 13px;
+            margin: 10px 0;
+            font-size: 9pt;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            line-height: 1.55;
+        }
+
+        .callout .ci {
+            flex-shrink: 0;
+            font-size: 12pt;
+            margin-top: 1px;
+        }
+
+        .callout.warn {
+            background: var(--orange-lt);
+            border-left: 3px solid var(--orange);
+        }
+
+        .callout.ok {
+            background: var(--green-lt);
+            border-left: 3px solid var(--green);
+        }
+
+        .callout.info {
+            background: var(--blue-lt);
+            border-left: 3px solid var(--blue);
+        }
+
+        .callout.danger {
+            background: #fdf0ef;
+            border-left: 3px solid var(--red);
+        }
+
+        /* ── TABLE ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: var(--teal);
+            color: white;
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 8.5pt;
+        }
+
+        th.blue-h {
+            background: var(--blue);
+        }
+
+        td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.45;
+        }
+
+        tr:nth-child(even) td {
+            background: var(--gray-lt);
+        }
+
+        td strong {
+            color: var(--blue);
+        }
+
+        /* ── BADGE ── */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 8pt;
+            font-weight: 600;
+        }
+
+        .badge.req {
+            background: #fde8e8;
+            color: var(--red);
+        }
+
+        .badge.opt {
+            background: #e8f5ee;
+            color: var(--green);
+        }
+
+        .badge.cond {
+            background: #fef3e8;
+            color: var(--orange);
+        }
+
+        .badge.ok2 {
+            background: #e8f5ee;
+            color: var(--green);
+        }
+
+        .badge.wait {
+            background: #fef3e8;
+            color: var(--orange);
+        }
+
+        .badge.sent {
+            background: var(--blue-lt);
+            color: var(--blue);
+        }
+
+        /* ── TWO-COLUMN LAYOUT ── */
+        .two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 10px 0;
+        }
+
+        .three {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        /* ── FEATURE CARD ── */
+        .card {
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 11px 13px;
+            background: var(--gray-lt);
+            border-top: 3px solid var(--teal);
+        }
+
+        .card.blue-t {
+            border-top-color: var(--blue);
+        }
+
+        .card.orange-t {
+            border-top-color: var(--orange);
+        }
+
+        .card h4 {
+            font-size: 9.5pt;
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            font-size: 9pt;
+            color: var(--gray);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .card-icon {
+            font-size: 16pt;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* ── STEP FLOW ── */
+        .steps {
+            margin: 12px 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 32px;
+            width: 2px;
+            height: calc(100% - 10px);
+            background: linear-gradient(180deg, var(--teal), rgba(26, 122, 114, 0.15));
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 9.5pt;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-num.blue-n {
+            background: var(--blue);
+        }
+
+        .step-body {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 8px 12px;
+            flex: 1;
+        }
+
+        .step-body h4 {
+            font-size: 9.5pt;
+            color: var(--blue);
+            margin-bottom: 3px;
+        }
+
+        .step-body p {
+            font-size: 9pt;
+            color: var(--gray);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── CHECKLIST ── */
+        .cl-item {
+            display: flex;
+            gap: 9px;
+            align-items: flex-start;
+            padding: 6px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 9.5pt;
+        }
+
+        .cl-item:last-child {
+            border-bottom: none;
+        }
+
+        .cl-icon {
+            font-size: 11pt;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        /* ── MOCK PHONE FRAME ── */
+        .phone-frame {
+            border: 2px solid #c5cfe0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            width: 160px;
+            font-size: 8pt;
+        }
+
+        .phone-bar {
+            background: var(--blue);
+            color: white;
+            padding: 6px 10px;
+            font-size: 8pt;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .phone-bar.teal-bar {
+            background: var(--teal);
+        }
+
+        .phone-body {
+            background: #f7f9fc;
+            padding: 8px 10px;
+            min-height: 90px;
+        }
+
+        /* ── WEB FRAME ── */
+        .web-frame {
+            border: 1px solid #c5cfe0;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            margin: 10px 0;
+        }
+
+        .web-topbar {
+            background: linear-gradient(90deg, var(--blue), #1a5c9e);
+            padding: 6px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8pt;
+            color: white;
+        }
+
+        .web-body {
+            background: #f5f8fc;
+            padding: 10px 14px;
+            font-size: 8.5pt;
+        }
+
+        /* ── TOC ── */
+        .toc-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+            gap: 12px;
+        }
+
+        .toc-row:last-child {
+            border-bottom: none;
+        }
+
+        .toc-num {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: var(--teal);
+            border-radius: 4px;
+            color: white;
+            font-weight: 700;
+            font-size: 10pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toc-num.b {
+            background: var(--blue);
+        }
+
+        .toc-num.o {
+            background: var(--orange);
+        }
+
+        .toc-info {
+            flex: 1;
+        }
+
+        .toc-info .tn {
+            font-weight: 700;
+            font-size: 9.5pt;
+            color: var(--blue);
+        }
+
+        .toc-info .td {
+            font-size: 8.5pt;
+            color: var(--gray);
+            margin-top: 1px;
+        }
+
+        .toc-pg {
+            font-size: 9pt;
+            color: var(--gray);
+            background: var(--gray-lt);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* ── FOOTER ── */
+        .pf {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--gray-lt);
+            border-top: 2px solid var(--teal);
+            padding: 6px 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.5pt;
+            color: var(--gray);
+        }
+
+        .pf strong {
+            color: var(--blue);
+        }
+
+        /* ── MISC ── */
+        p {
+            margin-bottom: 8px;
+            font-size: 9.5pt;
+            line-height: 1.65;
+        }
+
+        ul {
+            margin: 4px 0 8px 18px;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+            font-size: 9.5pt;
+            line-height: 1.6;
+        }
+
+        ul li::marker {
+            color: var(--teal);
+        }
+
+        h3 {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: var(--blue);
+            margin: 10px 0 5px;
+        }
+
+        strong {
+            color: var(--blue);
+        }
+
+        em {
+            color: var(--teal);
+            font-style: italic;
+        }
+
+        /* ── OSS DIAGRAM ── */
+        .oss {
+            background: var(--teal-lt);
+            border: 1px solid #b3d9d6;
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+            margin: 12px 0;
+        }
+
+        .oss-node {
+            display: inline-block;
+            background: white;
+            border: 2px solid var(--teal);
+            border-radius: 6px;
+            padding: 7px 18px;
+            font-weight: 700;
+            font-size: 9pt;
+            color: var(--blue);
+            min-width: 140px;
+        }
+
+        .oss-node.result {
+            background: var(--green-lt);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .oss-arrow {
+            font-size: 14pt;
+            color: var(--teal);
+            display: block;
+            line-height: 1.5;
+        }
+
+        .oss-inline {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 8px 0;
+            flex-wrap: wrap;
+        }
+
+        .oss-step {
+            background: white;
+            border: 1px solid #b3d9d6;
+            border-radius: 5px;
+            padding: 6px 12px;
+            text-align: center;
+            min-width: 90px;
+        }
+
+        .oss-step .n {
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--teal);
+            display: block;
+            line-height: 1;
+        }
+
+        .oss-step .l {
+            font-size: 8pt;
+            color: var(--blue);
+            font-weight: 600;
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* ── PRINT ── */
+        .no-print {
+            /* print button */
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            .page {
+                page-break-after: always;
+            }
+
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+
+
+        :root {
+            --tt-blue: #0d3c6e;
+            --tt-blue-mid: #1a5c9e;
+            --tt-blue-light: #2e8bc0;
+            --tt-teal: #00b4a0;
+            --tt-green: #27ae60;
+            --tt-orange: #f39c12;
+            --tt-red: #e74c3c;
+            --tt-bg: #f0f4f8;
+            --tt-white: #ffffff;
+            --tt-gray: #64748b;
+            --tt-gray-light: #e8edf3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 10.5pt;
+            color: #1e2a3a;
+            background: #d8e2ec;
+        }
+
+        /* ===== PRINT BUTTON ===== */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--tt-blue);
+            color: white;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            z-index: 999;
+            box-shadow: 0 4px 16px rgba(13, 60, 110, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .print-btn:hover {
+            background: var(--tt-blue-mid);
+        }
+
+        /* ===== PAGE ===== */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 24px auto;
+            background: white;
+            padding: 0;
+            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.18);
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* ===== COVER PAGE ===== */
+        .cover {
+            min-height: 297mm;
+            background: linear-gradient(160deg, #0d3c6e 0%, #1a5c9e 45%, #00b4a0 100%);
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .cover-top-band {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 18px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .tt-logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20pt;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .tt-logo-badge {
+            width: 52px;
+            height: 52px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18pt;
+            font-weight: 900;
+            color: var(--tt-blue);
+        }
+
+        .cover-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 48px 44px;
+        }
+
+        .cover-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 9pt;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 24px;
+            width: fit-content;
+        }
+
+        .cover-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42pt;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cover-subtitle {
+            font-size: 14pt;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 400;
+            margin-bottom: 36px;
+            line-height: 1.5;
+        }
+
+        .cover-divider {
+            width: 60px;
+            height: 4px;
+            background: var(--tt-teal);
+            border-radius: 2px;
+            margin-bottom: 36px;
+        }
+
+        .cover-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .cover-pill {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 7px 16px;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cover-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+
+        .cover-info-item {}
+
+        .cover-info-label {
+            font-size: 8pt;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+
+        .cover-info-value {
+            font-size: 10pt;
+            color: white;
+            font-weight: 600;
+        }
+
+        .cover-bottom {
+            padding: 20px 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8.5pt;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ===== INTERIOR PAGE LAYOUT ===== */
+        .page-inner {
+            padding: 0;
+        }
+
+        /* Page Header Banner */
+        .page-header {
+            background: linear-gradient(90deg, var(--tt-blue) 0%, var(--tt-blue-mid) 70%, var(--tt-blue-light) 100%);
+            padding: 14px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .page-header-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11pt;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.3px;
+        }
+
+        .page-header-right {
+            font-size: 8pt;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: right;
+        }
+
+        .page-header-right strong {
+            color: white;
+            display: block;
+            font-size: 9pt;
+        }
+
+        /* Page content area */
+        .page-content {
+            padding: 24px 30px;
+        }
+
+        /* ===== TABLE OF CONTENTS PAGE ===== */
+        .toc-cover {
+            background: linear-gradient(135deg, var(--tt-bg) 0%, #e0ecf5 100%);
+            padding: 36px 44px;
+            min-height: 297mm;
+        }
+
+        .toc-section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22pt;
+            font-weight: 700;
+            color: var(--tt-blue);
+            margin-bottom: 8px;
+        }
+
+        .toc-desc {
+            font-size: 10pt;
+            color: var(--tt-gray);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .toc-chapter {
+            background: white;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid var(--tt-teal);
+            transition: all 0.2s;
+        }
+
+        .toc-chapter.orange {
+            border-left-color: var(--tt-orange);
+        }
+
+        .toc-chapter.blue {
+            border-left-color: var(--tt-blue-light);
+        }
+
+        .toc-chapter.green {
+            border-left-color: var(--tt-green);
+        }
+
+        .toc-num-badge {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: var(--tt-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14pt;
+            font-weight: 700;
+            color: white;
+        }
+
+        .toc-chapter.orange .toc-num-badge {
+            background: var(--tt-orange);
+        }
+
+        .toc-chapter.blue .toc-num-badge {
+            background: var(--tt-blue-light);
+        }
+
+        .toc-chapter.green .toc-num-badge {
+            background: var(--tt-green);
+        }
+
+        .toc-chapter-info {
+            flex: 1;
+        }
+
+        .toc-chapter-name {
+            font-weight: 700;
+            font-size: 11pt;
+            color: var(--tt-blue);
+            margin-bottom: 3px;
+        }
+
+        .toc-chapter-desc {
+            font-size: 9pt;
+            color: var(--tt-gray);
+        }
+
+        .toc-page-num {
+            font-size: 10pt;
+            font-weight: 600;
+            color: var(--tt-gray);
+            background: var(--tt-gray-light);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* ===== SECTION HEADINGS ===== */
+        .section-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, var(--tt-blue), var(--tt-blue-mid));
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12pt;
+            font-weight: 700;
+            padding: 9px 18px;
+            border-radius: 6px;
+            margin: 20px 0 14px 0;
+            width: 100%;
+            letter-spacing: 0.2px;
+        }
+
+        .section-chip.teal {
+            background: linear-gradient(90deg, #007a6e, var(--tt-teal));
+        }
+
+        .section-chip.orange {
+            background: linear-gradient(90deg, #c47a00, var(--tt-orange));
+        }
+
+        h3 {
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--tt-blue);
+            border-left: 4px solid var(--tt-teal);
+            padding-left: 10px;
+            margin: 16px 0 10px 0;
+        }
+
+        h4 {
+            font-size: 10pt;
+            font-weight: 600;
+            color: var(--tt-blue-mid);
+            margin: 12px 0 6px 0;
+        }
+
+        p {
+            line-height: 1.75;
+            margin-bottom: 10px;
+            font-size: 10pt;
+        }
+
+        ul {
+            margin: 6px 0 10px 20px;
+        }
+
+        ul li {
+            line-height: 1.8;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        ul li::marker {
+            color: var(--tt-teal);
+        }
+
+        strong {
+            color: var(--tt-blue);
+        }
+
+        /* ===== CALLOUT BOXES ===== */
+        .callout {
+            border-radius: 8px;
+            padding: 13px 16px;
+            margin: 12px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 10pt;
+            line-height: 1.6;
+        }
+
+        .callout .callout-icon {
+            font-size: 16pt;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .callout.info {
+            background: #e8f4fb;
+            border-left: 4px solid var(--tt-blue-light);
+        }
+
+        .callout.success {
+            background: #e9f9f1;
+            border-left: 4px solid var(--tt-green);
+        }
+
+        .callout.warning {
+            background: #fef9e7;
+            border-left: 4px solid var(--tt-orange);
+        }
+
+        .callout.danger {
+            background: #fdf2f0;
+            border-left: 4px solid var(--tt-red);
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 10pt;
+        }
+
+        /* ===== FEATURE CARDS ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 14px 0;
+        }
+
+        .card-grid.three {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .feat-card {
+            border: 1px solid #dde8f5;
+            border-radius: 10px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #f8fbff, #eef5fc);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--tt-blue-light), var(--tt-teal));
+        }
+
+        .feat-card.orange::before {
+            background: linear-gradient(90deg, var(--tt-orange), #f8c471);
+        }
+
+        .feat-card.green::before {
+            background: linear-gradient(90deg, var(--tt-green), #82e0aa);
+        }
+
+        .feat-icon {
+            font-size: 20pt;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .feat-card h4 {
+            font-size: 10pt;
+            margin: 0 0 5px 0;
+            color: var(--tt-blue);
+        }
+
+        .feat-card p {
+            font-size: 9pt;
+            color: #4a5568;
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        /* ===== STEP FLOW ===== */
+        .step-flow {
+            margin: 16px 0;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 18px;
+            top: 38px;
+            width: 2px;
+            height: calc(100% - 8px);
+            background: linear-gradient(180deg, var(--tt-teal), rgba(0, 180, 160, 0.2));
+        }
+
+        .step-badge {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            background: var(--tt-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 11pt;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-content {
+            background: white;
+            border: 1px solid #dde8f5;
+            border-radius: 8px;
+            padding: 10px 14px;
+            flex: 1;
+        }
+
+        .step-content h4 {
+            margin: 0 0 4px 0;
+            font-size: 10pt;
+            color: var(--tt-blue);
+        }
+
+        .step-content p {
+            margin: 0;
+            font-size: 9.5pt;
+            color: #4a5568;
+            line-height: 1.55;
+        }
+
+        /* ===== TABLES ===== */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9.5pt;
+        }
+
+        .data-table th {
+            background: var(--tt-blue);
+            color: white;
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 9pt;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .data-table th:first-child {
+            border-radius: 0;
+        }
+
+        .data-table td {
+            padding: 7px 12px;
+            border-bottom: 1px solid #e8edf3;
+            line-height: 1.45;
+        }
+
+        .data-table tr:nth-child(even) td {
+            background: #f7fafd;
+        }
+
+        .data-table tr:hover td {
+            background: #edf2fa;
+        }
+
+        /* ===== PROFILE CARDS ===== */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 14px 0;
+        }
+
+        .profile-card {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #dde8f5;
+        }
+
+        .profile-card-header {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-card-header.blue-h {
+            background: linear-gradient(90deg, var(--tt-blue), var(--tt-blue-mid));
+        }
+
+        .profile-card-header.orange-h {
+            background: linear-gradient(90deg, #c47a00, var(--tt-orange));
+        }
+
+        .profile-icon-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16pt;
+        }
+
+        .profile-card-name {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 11pt;
+        }
+
+        .profile-card-role {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 8.5pt;
+        }
+
+        .profile-card-body {
+            background: white;
+            padding: 12px 16px;
+        }
+
+        .profile-card-body ul {
+            margin: 0 0 0 16px;
+        }
+
+        .profile-card-body ul li {
+            font-size: 9.5pt;
+            line-height: 1.7;
+            margin-bottom: 2px;
+        }
+
+        /* ===== STATUS PILLS ===== */
+        .pill {
+            display: inline-block;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 8.5pt;
+            font-weight: 600;
+        }
+
+        .pill.green {
+            background: #d5f5e3;
+            color: #1e8449;
+        }
+
+        .pill.blue {
+            background: #d6eaf8;
+            color: #1a5276;
+        }
+
+        .pill.orange {
+            background: #fdebd0;
+            color: #b7770d;
+        }
+
+        .pill.red {
+            background: #fdf2f0;
+            color: var(--tt-red);
+        }
+
+        .pill.teal {
+            background: #d1f2ef;
+            color: #007a6e;
+        }
+
+        /* ===== MINI SCREENSHOT FRAME ===== */
+        .ui-frame {
+            border: 1px solid #cdd8e8;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 12px 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .ui-frame-bar {
+            background: linear-gradient(90deg, #0d3c6e, #1a5c9e);
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ui-frame-bar-title {
+            color: white;
+            font-size: 9pt;
+            font-weight: 600;
+        }
+
+        .ui-frame-bar-user {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 8pt;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .ui-frame-content {
+            background: #f5f8fc;
+            padding: 14px 16px;
+            font-size: 9pt;
+            min-height: 80px;
+        }
+
+        /* ===== OSS DIAGRAM ===== */
+        .oss-diagram {
+            background: linear-gradient(135deg, #eaf7f5, #e8f4fb);
+            border: 1px solid #b3ddd8;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 14px 0;
+            text-align: center;
+        }
+
+        .oss-node {
+            display: inline-block;
+            background: white;
+            border: 2px solid var(--tt-teal);
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 10pt;
+            color: var(--tt-blue);
+            min-width: 150px;
+            box-shadow: 0 2px 10px rgba(0, 180, 160, 0.15);
+        }
+
+        .oss-node.result {
+            background: linear-gradient(135deg, #d1f2ef, #d6eaf8);
+            border-color: var(--tt-blue);
+        }
+
+        .oss-arrow {
+            display: block;
+            color: var(--tt-teal);
+            font-size: 20pt;
+            line-height: 1;
+            margin: 8px 0;
+        }
+
+        .oss-steps-inline {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .oss-step-inline {
+            background: white;
+            border: 1px solid #b3ddd8;
+            border-radius: 8px;
+            padding: 8px 14px;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .oss-step-inline .num {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14pt;
+            font-weight: 700;
+            color: var(--tt-teal);
+            line-height: 1;
+        }
+
+        .oss-step-inline .label {
+            display: block;
+            font-size: 8.5pt;
+            color: var(--tt-blue);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ===== CHECKLIST ===== */
+        .checklist {
+            margin: 10px 0;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 7px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 10pt;
+        }
+
+        .check-item:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11pt;
+            margin-top: 1px;
+        }
+
+        .check-icon.done {
+            background: #d5f5e3;
+        }
+
+        .check-icon.todo {
+            background: #fdebd0;
+        }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--tt-gray-light);
+            border-top: 2px solid var(--tt-blue);
+            padding: 8px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8pt;
+            color: var(--tt-gray);
+        }
+
+        .page-footer strong {
+            color: var(--tt-blue);
+        }
+
+        /* ===== SECTION INTRO STRIP ===== */
+        .section-intro {
+            background: linear-gradient(90deg, #eaf2fb, #f0f9f7);
+            border-left: 5px solid var(--tt-teal);
+            border-radius: 0 8px 8px 0;
+            padding: 12px 16px;
+            margin: 14px 0;
+            font-size: 10pt;
+            line-height: 1.65;
+            color: #2c3e50;
+        }
+
+        /* ===== TWO COLUMNS ===== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 12px 0;
+        }
+
+        .tt-logo-badge-img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        /* ===== PRINT MEDIA ===== */
+        /* Force background colors/images to print in all browsers */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            .page {
+                page-break-after: always;
+            }
+
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pc {
+            flex: 1;
+        }
+
+        .pf {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="no-print" onclick="window.print()"
+        style="position:fixed;top:16px;right:16px;background:#0d3c6e;color:white;border:none;padding:9px 20px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,0.25);">🖨️
+        Exporter PDF</button>
+
+    <!-- ══════════════════════════════
+     PAGE 1 — COUVERTURE
+══════════════════════════════ -->
+    <div class="page">
+        <div class="cover">
+            <!-- Decorative circles -->
+            <div class="cover-bg-circle" style="width:300px;height:300px;top:-80px;right:-80px;"></div>
+            <div class="cover-bg-circle" style="width:200px;height:200px;bottom:80px;left:-60px;"></div>
+            <div class="cover-bg-circle" style="width:120px;height:120px;bottom:200px;right:60px;"></div>
+
+            <!-- Top band -->
+            <div class="cover-top-band">
+                <div>
+                    <div
+                        style="font-size:8pt;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">
+                        Direction Centrale des Systèmes d'Information</div>
+                    <div style="font-size:11pt;font-weight:700;color:white;">Direction Exécutive SI Clients</div>
+                </div>
+                <img src="logo_TT.png" alt="TT Logo" class="tt-logo-badge-img">
+            </div>
+
+            <!-- Main body -->
+            <div class="cover-body">
+                <div class="cover-tag"> Support de Formation</div>
+                <div class="cover-title">TTBridge</div>
+                <div class="cover-subtitle">BackOffice<br>Guide Administrateurs DME</div>
+                <div class="cover-divider"></div>
+
+
+            </div>
+
+            <!-- Bottom -->
+            <div class="cover-bottom">
+                <span>© 2026 Tunisie Telecom </span>
+                <span>TTbridge BackOffice — v1.0</span>
+                <span>18 Mai 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════
+     PAGE 2 — INTRODUCTION & TABLE DES MATIÈRES
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">Introduction &amp; Table des Matières</div>
+            <div class="ph-right"><strong>TTbridge</strong>Guide Utilisateur — Backoffice</div>
+        </div>
+        <div class="pc">
+
+            <div class="sh">Introduction</div>
+            <div class="intro">
+                Le présent document constitue le manuel d’utilisation du système <strong> TTBridge BackOffice </strong>
+                destiné aux
+                <strong>Administrateurs DME.</strong>
+                Cette solution permet <strong>la gestion des amicales et des conventions, ainsi que la consultation des
+                    adhérents et des demandes.</strong>
+
+                Ce guide décrit les différentes fonctionnalités de l’interface web, notamment :
+                <strong>L’authentification, la
+                    gestion des amicales, la gestion des conventions, ainsi que la consultation des adhérents et des
+                    demandes.</strong>
+            </div>
+
+            <div class="sh">Table des Matières</div>
+            <div style="border:1px solid var(--border);border-radius:5px;overflow:hidden;">
+                <div class="toc-row" style="background:var(--gray-lt);">
+                    <div class="toc-num">1</div>
+                    <div class="toc-info">
+                        <div class="tn"> Authentification</div>
+                        <div class="td">Connexion à l'interface web TTBridge BackOffice</div>
+                    </div>
+                    <div class="toc-pg">p. 3</div>
+                </div>
+                <div class="toc-row">
+                    <div class="toc-num">2</div>
+                    <div class="toc-info">
+                        <div class="tn">BackOffice_Amicales</div>
+                        <div class="td">Gestion des amicales</div>
+                    </div>
+                    <div class="toc-pg">p. 3</div>
+                </div>
+                <div class="toc-row" style="background:var(--gray-lt);">
+                    <div class="toc-num">3</div>
+                    <div class="toc-info">
+                        <div class="tn">BackOffice_Conventions</div>
+                        <div class="td">Gestion des conventions</div>
+                    </div>
+                    <div class="toc-pg">p. 6</div>
+                </div>
+                <div class="toc-row">
+                    <div class="toc-num">4</div>
+                    <div class="toc-info">
+                        <div class="tn">BackOffice_Adhérents</div>
+                        <div class="td">Consultation des adhérents</div>
+                    </div>
+                    <div class="toc-pg">p. 10</div>
+                </div>
+                <div class="toc-row" style="background:var(--gray-lt);">
+                    <div class="toc-num b">5</div>
+                    <div class="toc-info">
+                        <div class="tn">BackOffice_Demandes</div>
+                        <div class="td">Consultation des demandes </div>
+                    </div>
+                    <div class="toc-pg">p. 12</div>
+                </div>
+
+
+            </div>
+
+            <div class="callout info" style="margin-top:16px;">
+                <div class="ci"></div>
+                <div>Ce document est destiné à un usage interne. Il couvre l'intégralité des fonctionnalités disponibles
+                    pour les <strong>Administrateurs DME</strong> . Pour toute assistance, contactez la DCSI — SI
+                    Clients.
+                </div>
+            </div>
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>BackOffice — Guide
+                Utilisateur</span><span>Page 2 / 17</span></div>
+    </div>
+
+    <!-- ══════════════════════════════
+     PAGE 3 — PRISE EN MAIN + OSS
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">BackOffice
+            </div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+            <div class="sh">Authentification</div>
+
+            <div>
+                <div>
+                    <p>Bienvenue dans <strong>TTBridge</strong> — la solution de gestion des amicales
+                        développée pour Tunisie Telecom.</p>
+                    <p>L’utilisateur s’authentifie en saisissant son nom d’utilisateur ainsi que son mot de passe.</p>
+
+
+
+
+                    <!-- Ajout de la capture d'écran -->
+                    <div style="margin-top:12px; text-align:center;">
+                        <img src="auth.png" alt="Capture écran connexion TTBridge"
+                            style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                    </div>
+
+                    <div class="callout warn" style="margin-top:8px;">
+                        <div class="ci"></div>
+                        <div>En cas d'échec, vérifiez votre connexion réseau et réessayez. Ne partagez jamais vos
+                            identifiants.</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sh">Les interfaces Web</div>
+
+
+
+            <div class="ssh">1. Consultation des Amicales</div>
+            <div>
+                <h3>Liste des Amicales</h3>
+                <p>Cette interface permet de consulter, rechercher et gérer les amicales enregistrées dans le
+                    système.</p>
+
+                <ul>
+                    <li><strong>Zone de recherche :</strong> permet de filtrer les amicales par nom via un mot clé,
+                        puis cliquer sur <strong>Appliquer</strong>.</li>
+                    <li><strong>Tableau des résultats :</strong>
+                        <ul>
+                            <li>Nom de l’amicale</li>
+                            <li>Nombre d’adhérents</li>
+                            <li>Nombre de conventions</li>
+                            <li>Nombre de transactions</li>
+                        </ul>
+                    </li>
+                    <li><strong>Actions :</strong> modifier ou supprimer une amicale.</li>
+                    <li><strong>Ajout :</strong> bouton <strong>Ajouter une amicale</strong> pour créer une nouvelle
+                        amicale.</li>
+                    <li><strong>Pagination :</strong> navigation entre les pages (Previous / Next).</li>
+                </ul>
+            </div>
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 3 / 17</span></div>
+    </div>
+
+    <!-- ══════════════════════════════
+     PAGE 4 — FONCTIONNALITÉS MOBILE
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">BackOffice_Amicales </div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+
+
+
+
+            <!-- Ajout de la capture d'écran -->
+            <div style="margin-top:12px; text-align:center;">
+                <img src="listeamicale.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+            <div class="ssh">2. Ajout d'une amicale</div>
+
+            <div>
+
+                <div>
+                    <h3>Ajouter une amicale</h3>
+                    <p>On peut ajouter une amicale en saisissant le nom et l’email du super administrateur.</p>
+                    <p>Cliquer sur le bouton <strong>Ajouter</strong> pour valider ou <strong>Annuler</strong> pour
+                        abandonner.</p>
+                </div>
+
+                <!-- Ajout de la capture d'écran -->
+                <div style="margin-top:12px; text-align:center;">
+                    <img src="ajoutamicale.png" alt="Capture écran amicales TTBridge"
+                        style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 4 / 17</span></div>
+    </div>
+
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">BackOffice_Amicales </div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+            <div class="ssh">3. Modification d'une amicale</div>
+            <div>
+
+                <div>
+                    <h3>Modifier une amicale</h3>
+                    <p>On peut modifier une amicale en mettant à jour son nom.</p>
+                    <p>Cliquer sur <strong>Enregistrer</strong> pour valider ou <strong>Annuler</strong> pour quitter.
+                    </p>
+                </div>
+
+                <!-- Ajout de la capture d'écran -->
+                <div style="margin-top:12px; text-align:center;">
+                    <img src="modifamicale.png" alt="Capture écran amicales TTBridge"
+                        style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+
+
+            <div class="ssh">4. Suppression d'une amicale</div>
+            <div>
+
+                <div>
+                    <h3>Supprimer une amicale</h3>
+                    <p>On peut supprimer une amicale après confirmation.</p>
+                    <p>Cliquer sur <strong>Supprimer</strong> pour confirmer ou <strong>Annuler</strong> pour annuler
+                        l’action.</p>
+                </div>
+
+                <!-- Ajout de la capture d'écran -->
+                <div style="margin-top:12px; text-align:center;">
+                    <img src="suppamicale.png" alt="Capture écran amicales TTBridge"
+                        style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 5 / 17</span></div>
+    </div>
+    <!-- ══════════════════════════════
+     PAGE 5 — CLÔTURE RACC (1/2)
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">BackOffice_Conventions</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+            <div class="ssh">1. Consultation des conventions</div>
+
+            <div>
+
+                <div>
+                    <h3>Liste des Conventions</h3>
+                    <p>Cette interface permet de consulter, filtrer et gérer les conventions.</p>
+
+                    <ul>
+                        <li><strong>Filtres de recherche :</strong>
+                            <ul>
+                                <li>Nom de la convention</li>
+                                <li>Date de fin (intervalle)</li>
+                                <li>Statut (Active / Expirée)</li>
+                                <li>Responsable de paiement</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tableau des résultats :</strong>
+                            <ul>
+                                <li>Identifiant</li>
+                                <li>Nom de la convention</li>
+                                <li>Responsable paiement</li>
+                                <li>Date de fin</li>
+                                <li>Statut (affiché avec indicateur visuel)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Actions :</strong> consulter, modifier ou supprimer une convention.</li>
+                        <li><strong>Ajout :</strong> bouton <strong>Ajouter une convention</strong>.</li>
+                        <li><strong>Pagination :</strong> navigation entre les différentes pages.</li>
+                    </ul>
+                </div>
+
+                <!-- Ajout de la capture d'écran -->
+                <div style="margin-top:12px; text-align:center;">
+                    <img src="listeconvention.png" alt="Capture écran amicales TTBridge"
+                        style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 6 / 17</span></div>
+    </div>
+
+
+
+
+
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">BackOffice_Conventions</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+
+            <div class="ssh">2. Détails de la convention</div>
+
+            <div>
+
+                <div>
+                    <h3>Détails de la convention</h3>
+                    <p>On peut consulter les details d’une convention affichant les informations générales (nom, dates,
+                        statut).</p>
+                    <p>Les paramètres comme nombre de produits, âge maximal et documents requis sont également visibles.
+                    </p>
+                </div>
+
+                <!-- Ajout de la capture d'écran -->
+                <div style="margin-top:12px; text-align:center;">
+                    <img src="detailconvention.png" alt="Capture écran amicales TTBridge"
+                        style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+
+            </div>
+
+            <div class="ssh">3. Ajout d'une convention </div>
+
+            <div>
+                <h3>Ajouter une convention</h3>
+                <p>On peut ajouter une convention en sélectionnant une amicale et en saisissant les informations
+                    générales (nom, dates, responsable paiement).</p>
+                <p>Les documents obligatoires ainsi que les différentes offres associées doivent être définis.</p>
+                <p>Cliquer sur <strong>Ajouter</strong> pour enregistrer ou <strong>Annuler</strong> pour quitter.
+                </p>
+            </div>
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 7 / 17</span></div>
+    </div>
+
+
+
+
+
+
+    <!-- ══════════════════════════════
+     PAGE 6 — CLÔTURE RACC (2/2) + TABLEAU RÉCAP
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">BackOffice_Conventions</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+            <div>
+
+
+
+                <!-- Ajout de la capture d'écran -->
+                <div style="margin-top:12px; text-align:center;">
+                    <img src="ajoutconvention.png" alt="Capture écran amicales TTBridge"
+                        style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+
+            <div class="ssh">4. Modification d'une convention</div>
+
+            <div>
+                <h3>Modifier une convention</h3>
+                <p>On peut modifier une convention en mettant à jour les informations (nom, dates, responsable
+                    paiement).</p>
+                <p>Cliquer sur <strong>Enregistrer</strong> pour valider ou <strong>Annuler</strong> pour quitter.</p>
+            </div>
+
+
+            <!-- Ajout de la capture d'écran -->
+            <div style="margin-top:12px; text-align:center;">
+                <img src="modifconvention.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 8 / 17</span></div>
+    </div>
+
+
+    <!-- ══════════════════════════════
+     PAGE 6 — CLÔTURE RACC (2/2) + TABLEAU RÉCAP
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph">
+            <div class="ph-title">BackOffice_Conventions</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+            <div class="ssh">3. Suppression d'une convention </div>
+
+            <div>
+
+                <h3>Supprimer une convention</h3>
+                <p>On peut supprimer une convention après confirmation.</p>
+                <p>Cliquer sur <strong>Supprimer</strong> pour confirmer ou <strong>Annuler</strong> pour annuler
+                    l’action.</p>
+            </div>
+
+            <!-- Ajout de la capture d'écran -->
+            <div style="margin-top:12px; text-align:center;">
+                <img src="suppconvention.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+
+
+
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 9 / 17</span></div>
+    </div>
+
+    </div>
+
+
+    <!-- ══════════════════════════════
+     PAGE 8 — APPLICATION BUREAU (1/2)
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Adhérents</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+
+            <div class="ssh blue">1. Consultation des adhérents </div>
+            <div>
+
+                <div>
+                    <h3>Liste des Adhérents</h3>
+                    <p>Cet écran permet de consulter et rechercher les adhérents associés aux amicales.</p>
+
+                    <ul>
+                        <li><strong>Zone de recherche :</strong> permet de rechercher un adhérent par CIN, CNRPS ou
+                            numéro de téléphone, puis cliquer sur <strong>Appliquer</strong>.</li>
+                        <li><strong>Tableau des résultats :</strong>
+                            <ul>
+                                <li>CIN</li>
+                                <li>Prénom et Nom</li>
+                                <li>Numéro de téléphone</li>
+                                <li>Date de naissance</li>
+                                <li>CNRPS</li>
+                                <li>Région</li>
+                                <li>Nom de l’amicale</li>
+                            </ul>
+                        </li>
+                        <li><strong>Action :</strong> consulter les détails d’un adhérent via l’icône correspondante.
+                        </li>
+                        <li><strong>Pagination :</strong> navigation entre les pages des résultats.</li>
+                    </ul>
+                </div>
+
+                <!-- Ajout de la capture d'écran -->
+                <div style="margin-top:12px; text-align:center;">
+                    <img src="listeadherent.png" alt="Capture écran amicales TTBridge"
+                        style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 10 / 17</span></div>
+    </div>
+
+
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Adhérents</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+
+            <div class="ssh blue">2. Détails de l'adhérent</div>
+
+            <div>
+                <h3>Détails de l’adhérent</h3>
+                <p>On peut consulter les informations d’un adhérent (CIN, nom, prénom, téléphone et région).</p>
+                <p>Les autres informations comme CNRPS, date de naissance et rattachement sont également affichées.</p>
+            </div>
+
+
+
+            <!-- Ajout de la capture d'écran -->
+            <div style="margin-top:12px; text-align:center;">
+                <img src="detailadherent.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 11 / 17</span></div>
+    </div>
+
+
+    <!-- ══════════════════════════════
+     PAGE 9 — APPLICATION BUREAU (2/2)
+══════════════════════════════ -->
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Demandes</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+            <div class="ssh blue">1. Consultation des demandes </div>
+
+
+            <div>
+                <h3>Liste des Demandes</h3>
+                <p>Cet écran permet de consulter, rechercher et suivre les demandes (transactions) associées aux
+                    adhérents.</p>
+
+                <ul>
+                    <li><strong>Zone de recherche :</strong> permet de rechercher une demande par :
+                        <ul>
+                            <li>ID de transaction</li>
+                            <li>Informations de l’adhérent</li>
+                        </ul>
+                        Cliquer sur <strong>Appliquer</strong> pour afficher les résultats filtrés.
+                    </li>
+
+                    <li><strong>Filtrage avancé :</strong>
+                        <ul>
+                            <li>Filtrer les demandes selon le <strong>statut</strong> (ex : Activée, En attente,
+                                Annulée)</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Tableau des résultats :</strong>
+                        <ul>
+                            <li><strong>ID</strong> : identifiant de la transaction (ex : TRAN-090)</li>
+                            <li><strong>Adhérent</strong> : nom de l’adhérent concerné</li>
+                            <li><strong>Statut</strong> :
+                                <ul>
+                                    <li>En attente d’activation</li>
+                                    <li>Activée</li>
+                                    <li>Annulée</li>
+                                    <li>Informations supplémentaires (ex : Voucher livré / non livré)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Action :</strong> consulter les détails d’une demande via l’icône affichée.</li>
+
+                    <li><strong>Pagination :</strong> navigation entre les pages pour afficher plus de résultats.</li>
+                </ul>
+            </div>
+
+
+            <!-- Ajout de la capture d'écran -->
+            <div style="margin-top:12px; text-align:center;">
+                <img src="listedemande.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 12 / 17</span></div>
+    </div>
+
+
+
+
+
+
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Demandes</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+
+            <!-- Ajout de la capture d'écran -->
+            <div style="margin-top:12px; text-align:center;">
+                <img src="listedemande.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+            <div class="ssh blue">2. Détails de la demande</div>
+
+            <div>
+                <h3>Détails de la demande</h3>
+                <p>On peut consulter les informations d’une demande (identifiant, statut et source).</p>
+                <p>Les détails de l’adhérent et du produit associé sont également affichés.</p>
+                <p>Le suivi de la transaction permet de voir l’état d’avancement (ex : en attente d’activation).</p>
+                <p>Le bouton <strong>« Télécharger » </strong> permet de télécharger les documents des adhérents
+                    associés à chaque demande.</p>
+            </div>
+
+            <!-- Ajout de la capture d'écran -->
+            <div style="margin-top:12px; text-align:center;">
+                <img src="detaildemande.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 13 / 17</span></div>
+    </div>
+
+
+
+
+
+
+
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Demandes</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+            <div style="margin-top:12px; text-align:center;">
+                <img src="detaildemande_active_voucher_livre.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+            <div style="margin-top:12px; text-align:center;">
+                <img src="detaildemande_voucher_non_livre.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 14 / 17</span></div>
+    </div>
+
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Demandes</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+            <div style="margin-top:12px; text-align:center;">
+                <img src="detatildemande_active.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+            <div style="margin-top:12px; text-align:center;">
+                <img src="detaildemande_annulee.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 15 / 17</span></div>
+    </div>
+
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Mot de passe</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+
+
+            <div>
+                <h3> Changer le mot de passe</h3>
+
+
+
+                <p>
+                    Pour modifier le mot de passe :
+                </p>
+
+                <ul>
+                    <li>Saisir le <strong>nouveau mot de passe</strong></li>
+                    <li>Confirmer le mot de passe dans le champ de confirmation</li>
+                </ul>
+
+                <p>
+                    Une icône permet d’afficher ou de masquer le mot de passe pour vérifier la saisie.
+                </p>
+
+                <p>
+                    Cliquer sur <strong>« Mettre à jour »</strong> pour enregistrer le nouveau mot de passe.
+                </p>
+
+                <p>
+                    L’utilisateur peut également accéder à la fonctionnalité via le menu <strong>« Changer mot de passe
+                        »</strong> dans l’application.
+                </p>
+
+                <p>
+                    En cas d’erreur ou si le mot de passe ne respecte pas les règles, un message d’alerte s’affiche.
+                </p>
+            </div>
+
+
+
+
+
+            <div style="margin-top:12px; text-align:center;">
+                <img src="change password backoffice.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+            <div style="margin-top:12px; text-align:center;">
+                <img src="change password.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 16 / 17</span></div>
+    </div>
+
+    <div class="page">
+        <div class="ph blue">
+            <div class="ph-title">BackOffice_Mot de passe</div>
+            <div class="ph-right"><strong>TTBridge</strong>Guide Utilisateur — DCSI</div>
+        </div>
+        <div class="pc">
+            <div>
+                <h3>Réinitialiser le mot de passe</h3>
+
+                <p>
+                    En cas d’oubli du mot de passe, cliquer sur le lien <strong>« Mot de passe oublié ? »</strong>
+                    depuis la page de connexion.
+                </p>
+
+                <p>
+                    Une page de réinitialisation s’affiche. L’utilisateur doit saisir son <strong>nom d’utilisateur ou
+                        son email</strong>.
+                </p>
+
+                <p>
+                    Cliquer sur le bouton <strong>« Envoyer le lien »</strong> pour recevoir un lien de
+                    réinitialisation.
+                </p>
+
+                <p>
+                    Après réception du lien et accès à la page dédiée, l’utilisateur est invité à définir un nouveau mot
+                    de passe.
+                </p>
+
+
+            </div>
+
+
+            <div style="margin-top:12px; text-align:center;">
+                <img src="reset password.png" alt="Capture écran amicales TTBridge"
+                    style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            </div>
+
+
+
+        </div>
+        <div class="pf"><span><strong>Tunisie Telecom</strong> — DCSI / SI Clients</span><span>TTBridge — Guide
+                Utilisateur</span><span>Page 17 / 17</span></div>
+    </div>
+</body>
+
+</html>
